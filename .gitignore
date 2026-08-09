@@ -1,0 +1,20 @@
+# Build outputs
+bin/
+obj/
+dist/
+*.user
+*.suo
+
+# Visual Studio / Rider
+.vs/
+.idea/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Logs (only ever error.log on the laptop; never on dev box)
+*.log
+
+# Worktrees
+.worktrees/

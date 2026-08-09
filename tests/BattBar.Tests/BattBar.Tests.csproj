@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>BattBar.Tests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="xunit" Version="2.6.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Pull Core sources directly so the test project compiles only pure-Core code
+         on net8.0 and runs on Linux without pulling Microsoft.WindowsDesktop.App.
+         Tray/ (WinForms) is intentionally not included here.
+         BatteryReader.cs is excluded because it uses System.Management (WMI),
+         which has no Linux runtime. Its behavior can only be verified on the laptop. -->
+    <Compile Include="..\..\src\Core\**\*.cs" />
+    <Compile Remove="..\..\src\Core\BatteryReader.cs" />
+  </ItemGroup>
+</Project>
